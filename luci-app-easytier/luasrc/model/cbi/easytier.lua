@@ -5,9 +5,8 @@ m = Map("easytier")
 m.description = translate("A simple, secure, decentralized VPN solution for intranet penetration, implemented in Rust using the Tokio framework. "
         .. "Project URL: <a href=\"https://github.com/EasyTier/EasyTier\" target=\"_blank\">github.com/EasyTier/EasyTier</a>&nbsp;&nbsp;"
         .. "<a href=\"http://easytier.cn\" target=\"_blank\">Official Documentation</a>&nbsp;&nbsp;"
-        .. "<a href=\"http://qm.qq.com/cgi-bin/qm/qr?_wv=1027&k=jhP2Z4UsEZ8wvfGPLrs0VwLKn_uz0Q_p&authKey=OGKSQLfg61YPCpVQuvx%2BxE7hUKBVBEVi9PljrDKbHlle6xqOXx8sOwPPTncMambK&noverify=0&group_code=949700262\" target=\"_blank\">QQ Group</a>&nbsp;&nbsp;"
-        .. "<a href=\"https://doc.oee.icu\" target=\"_blank\">Beginner Tutorial</a>")
-
+        .. "<a href=\"http://qm.qq.com/cgi-bin/qm/qr?_wv=1027&k=jhP2Z4UsEZ8wvfGPLrs0VwLKn_uz0Q_p&authKey=OGKSQLfg61YPCpVQuvx%2BxE7hUKBVBEVi9PljrDKbHlle6xqOXx8sOwPPTncMambK&noverify=0&group_code=949700262\" target=\"_blank\">QQ Group</a>&nbsp;&nbsp;")
+  
 m:section(SimpleSection).template  = "easytier/easytier_status"
 
 -- easytier-core
@@ -147,7 +146,7 @@ listenermode = s:taboption("general", ListValue, "listenermode", translate("List
                 .. "If used purely as a client (not as a server), you can choose not to listen on a port"))
 listenermode:value("ON", translate("Listen"))
 listenermode:value("OFF", translate("Do Not Listen"))
-listenermode.default = "OFF"
+listenermode.default = "ON"
 listenermode:depends("etcmd", "etcmd")
 
 tcp_port = s:taboption("general", Value, "tcp_port", translate("TCP/UDP Port"),
@@ -625,7 +624,7 @@ btn1info.cfgvalue = function(self, section)
     else
         return string.format(
             "<pre style='background:#f9f9f9;border:1px solid #ccc;padding:8px;white-space:pre-wrap;'>%s</pre>",
-            luci.xml.pcdata(content)
+            luci.util.pcdata(content)
         )
     end
 end
@@ -763,7 +762,7 @@ btn4info.cfgvalue = function(self, section)
     else
         return string.format(
             "<pre style='background:#f9f9f9;border:1px solid #ccc;padding:8px;white-space:pre-wrap;'>%s</pre>",
-            luci.xml.pcdata(content)
+            luci.util.pcdata(content)
         )
     end
 end
@@ -852,7 +851,7 @@ btn6info.cfgvalue = function(self, section)
         -- 没有表格 → 原样显示
         return string.format(
             "<pre style='background:#f9f9f9;border:1px solid #ccc;padding:8px;white-space:pre-wrap;'>%s</pre>",
-            luci.xml.pcdata(content)
+            luci.util.pcdata(content)
         )
     end
 end
@@ -1129,7 +1128,7 @@ btn11info.cfgvalue = function(self, section)
     else
         return string.format( 
             "<pre style='background:#f9f9f9;border:1px solid #ccc;padding:8px;white-space:pre-wrap;'>%s</pre>",
-            luci.xml.pcdata(content) 
+            luci.util.pcdata(content) 
         ) 
     end
 end
