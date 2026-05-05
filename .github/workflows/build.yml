@@ -29,7 +29,6 @@ jobs:
       matrix:
         arch:
           - aarch64_cortex-a53
-          
         sdk:
           - SNAPSHOT
 
@@ -85,7 +84,7 @@ jobs:
 
     steps:
       - name: Download all artifacts
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v7
         with:
           path: artifacts
 
@@ -106,8 +105,6 @@ jobs:
             body: |
 
              > ### ![](https://img.shields.io/badge/%E7%BC%96%E8%AF%91%E6%97%B6%E9%97%B4-${{ env.build_time }}-easytier?logo=github&labelColor=%E9%A1%BB)![](https://img.shields.io/github/downloads/${{ github.repository }}/${{ env.TAG }}/total?label=%E4%B8%8B%E8%BD%BD%E6%AC%A1%E6%95%B0&logo=github)
-
-             - 其中 **`22.03.7`** 里面是ipk安装包 **`SNAPSHOT`** 里面是apk安装包
 
              - **`*.apk` 是OpenWrt新版的APK包** 对于apk包跳过证书命令
              `apk add --allow-untrusted luci-app-easytier.apk`
